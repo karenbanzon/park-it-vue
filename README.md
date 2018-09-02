@@ -26,7 +26,7 @@ Once you have the prerequisites installed, it's time to use `npm` to fetch the d
 npm install
 ```
 
-### Compile and hot-reload for development
+## Compile and hot-reload for development
 
 When you have the dependencies installed, you can run the application locally.
 
@@ -34,18 +34,44 @@ When you have the dependencies installed, you can run the application locally.
 npm run serve
 ```
 
-### Compile and minify for production
+## Compile and minify for production
 
-If you want to check out the production build.
+If you want to check out the production build. It will output the production files in a folder named `dist`.
 
 ```bash
 npm run build
 ```
 
-### Lint and fix files
+If you want to serve the production build locally, install the `serve` dependency first.
+
+```bash
+npm install -g serve
+```
+
+Afterwards, you can use it to serve the production build from the `dist` folder.
+
+```bash
+serve -s dist
+```
+
+## Lint and fix files
 
 The project uses ESLint to clean up the code.
 
 ```bash
 npm run lint
 ```
+
+## Main resources
+
+If you want to contribute to the project, you can read up on the following:
+
+-   [Vue.js](https://vuejs.org/) - The main framework of the project
+-   [Vuex (official)](https://vuex.vuejs.org/) - Used for state management
+-   [Vue Router (official)](https://router.vuejs.org/) - Used for routing
+-   [Vuetify](https://vuetifyjs.com/en/) - Material design component framework
+
+Other resources you might find helpful:
+
+-   [Webpack](https://webpack.js.org/) - Module bundler
+-   [Stylus](http://stylus-lang.com/) - CSS framework used in Vuetify

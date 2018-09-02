@@ -3,6 +3,43 @@
     <v-layout row wrap>
       <v-flex xs12>
         <v-layout row wrap>
+          <v-flex xs12>
+            <h1>My reservation</h1>
+          </v-flex>
+        </v-layout>
+        <v-layout row wrap>
+          <v-flex xs12 sm6 md4 pa-2>
+            <v-card>
+              <v-card-title primary-title>
+                <div>
+                  <h1 class="headline">
+                    <v-icon
+                      v-if="1"
+                      color="warning"
+                      class="pa-1"
+                    >warning</v-icon>
+                    <small class="grey--text">Reserved until</small> {{ bookingTime.hours }}:{{ bookingTime.minutes }}</h1>
+                  <h2>{{ booking.name }}</h2>
+                  <span class="grey--text">{{ booking.distance }}</span>
+                  <!-- <v-rating
+                    dense
+                    color="primary"
+                    background-color="grey"
+                    v-model="item.rating"
+                  ></v-rating> -->
+                </div>
+              </v-card-title>
+
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn flat color="primary">Navigate</v-btn>
+                <v-btn flat color="error">Cancel booking</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-flex>
+        </v-layout>
+        <v-spacer class="mt-5"></v-spacer>
+        <v-layout row wrap>
           <v-flex xs6 sm8 md9>
             <h1>Near me</h1>
           </v-flex>
@@ -139,7 +176,15 @@ import { mapState } from 'vuex'
 export default {
   data: () => ({}),
   computed: {
-    ...mapState(['nearby', 'recent'])
+    ...mapState(['booking', 'nearby', 'recent']),
+
+    bookingTime() {
+      let date = new Date(this.booking.bookedUntil * 1000)
+      let hours = date.getHours()
+      let minutes = date.getMinutes()
+
+      return { hours, minutes }
+    }
   },
   watch: {}
 }

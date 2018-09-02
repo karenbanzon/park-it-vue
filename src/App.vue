@@ -2,17 +2,16 @@
   <v-app>
     <v-navigation-drawer
       persistent
-      :mini-variant="isMiniVariant"
-      :clipped="isClipped"
-      v-model="isDrawerOpen"
-      enable-resize-watcher
+      :clipped="nav.isClipped"
+      v-model="nav.isDrawerOpen"
+      disable-resize-watcher
       fixed
       app
     >
       <v-list>
         <v-list-tile
           value="true"
-          v-for="(item, i) in items"
+          v-for="(item, i) in nav.items"
           :key="i"
           router
           :to="{ name: item.routeName }"
@@ -30,9 +29,9 @@
       app
       dark
       color="primary"
-      :clipped-left="isClipped"
+      :clipped-left="nav.isClipped"
     >
-      <v-toolbar-side-icon @click.stop="isDrawerOpen = !isDrawerOpen"></v-toolbar-side-icon>
+      <v-toolbar-side-icon @click.stop="nav.isDrawerOpen = !nav.isDrawerOpen"></v-toolbar-side-icon>
       <v-toolbar-title>
         <v-btn
           flat
@@ -132,28 +131,27 @@ export default {
   name: 'App',
   data() {
     return {
-      isClipped: true,
-      isDrawerOpen: false,
-      isFixed: false,
-      items: [
-        {
-          icon: 'home',
-          title: 'Home',
-          routeName: 'home'
-        },
-        {
-          icon: 'info',
-          title: 'About',
-          routeName: 'about'
-        }
-      ],
-      isMiniVariant: false,
-      isRight: true,
-      isRightDrawerOpen: false,
       title: 'Park It!',
       showSearch: false,
       searchQuery: '',
       isEditingSearch: false,
+      nav: {
+        isClipped: true,
+        isDrawerOpen: false,
+        isFixed: false,
+        items: [
+          {
+            icon: 'home',
+            title: 'Home',
+            routeName: 'home'
+          },
+          {
+            icon: 'info',
+            title: 'About',
+            routeName: 'about'
+          }
+        ]
+      },
       fabSettings: {
         direction: 'top',
         fab: false,

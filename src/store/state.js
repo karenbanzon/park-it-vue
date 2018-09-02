@@ -1,4 +1,9 @@
 export default {
+  booking: {
+    name: 'Metro Parking Management',
+    distance: '0.2km',
+    bookedUntil: '1535874527'
+  },
   nearby: [
     {
       name: 'Metro Parking Management',
